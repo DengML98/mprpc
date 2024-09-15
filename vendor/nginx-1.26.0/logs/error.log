@@ -1,0 +1,10 @@
+2024/05/01 21:11:46 [emerg] 299828#0: bind() to 0.0.0.0:80 failed (13: Permission denied)
+2024/05/01 21:13:07 [notice] 300846#0: signal process started
+2024/05/01 21:13:07 [alert] 300846#0: kill(299930, 1) failed (1: Operation not permitted)
+2024/05/01 21:13:13 [notice] 300935#0: signal process started
+2024/05/01 21:13:13 [alert] 300935#0: kill(299930, 15) failed (1: Operation not permitted)
+2024/05/01 21:13:20 [notice] 301069#0: signal process started
+2024/05/01 21:13:20 [alert] 301069#0: kill(299930, 15) failed (1: Operation not permitted)
+2024/05/01 21:13:28 [notice] 301161#0: signal process started
+2024/05/03 11:42:12 [error] 304851#0: *21 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: 0.0.0.0:8001, upstream: "127.0.0.1:6002", bytes from/to client:0/0, bytes from/to upstream:0/0
+2024/05/12 13:09:49 [notice] 959522#0: signal process started

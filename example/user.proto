@@ -1,0 +1,79 @@
+syntax = "proto3";
+package fixbug;
+option cc_generic_services = true;
+
+//给外部只提供服务，不涉及业务
+//提供所有对于mysql的操作
+
+
+message StringList {
+    repeated string items = 1; // 类似于 vector<string>
+}
+message NestedStringList {
+    repeated StringList lists = 1; // 类似于 vector<vector<string>>
+}
+message QueryRequest {
+    string sql = 1;
+}
+message QueryResponse {
+    int32 success = 1; //-1表示query失败, 1表示query成功且有数据，0表示无数据
+    NestedStringList msg = 2;   //查询结果: vector<vector<string>> 每个string都是一个字段，一条数据组成一个vector
+}
+
+message UpdateRequest {
+    string sql = 1;
+}
+message UpdateResponse {
+    bool success = 1; //更新是否成功
+    string msg = 2;   //更新结果
+}
+
+message TableRequest {
+    string sql = 1;
+}
+message TableResponse {
+    bool success = 1; //更新是否成功
+    string msg = 2;   //更新结果
+}
+
+service RpcService {
+    rpc Query(QueryRequest) returns(QueryResponse);
+    rpc Update(UpdateRequest) returns(UpdateResponse);
+    rpc UpdateTable(TableRequest) returns(TableResponse);
+}
+
+// message RegisterRequest { 
+//     string name = 1;
+//     string password = 2;
+// }
+// message RegisterResponse {
+//     bool success = 1;
+//     string msg = 2;
+// }
+// //rpc服务类,一个服务多个方法
+// service RegisterService {
+//     rpc Register(RegisterRequest) returns(RegisterResponse);
+// }
+
+// message LoginRequest { //登录请求
+//     string name = 1;
+//     string password = 2;
+// }
+// message LoginResponse { 
+//     bool success = 1;
+//     string msg = 2;
+// }
+
+// //聊天发给谁+内容
+// message ChatRequest {
+//     string name = 1;
+//     string msg = 2;
+// }
+// message ChatResponse {
+//     string msg = 1;
+// }
+
+// service LoginChatService {
+//     rpc Login(LoginRequest) returns(LoginResponse);
+//     rpc Chat(ChatRequest) returns(ChatResponse);
+// }
